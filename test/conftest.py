@@ -34,7 +34,7 @@ def mkresponse(r):
     except FileNotFoundError:
         return (404, {}, "Nope.")
     if version is None:
-        version = next(reversed(data))
+        version = next(reversed([k for k, v in data.items() if not v["info"]["yanked"]]))
     try:
         about = data[version]
     except KeyError:

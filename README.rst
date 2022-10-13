@@ -159,13 +159,17 @@ Example::
                 "is_prerelease": false,
                 "release_date": "2017-04-02T03:07:42",
                 "release_url": "https://pypi.org/project/qypi/0.1.0",
-                "version": "0.1.0"
+                "version": "0.1.0",
+                "yanked": false,
+                "yanked_reason": null
             },
             {
                 "is_prerelease": false,
                 "release_date": "2017-04-02T03:32:44",
                 "release_url": "https://pypi.org/project/qypi/0.1.0.post1",
-                "version": "0.1.0.post1"
+                "version": "0.1.0.post1",
+                "yanked": false,
+                "yanked_reason": null
             }
         ]
     }
@@ -303,7 +307,9 @@ Example::
             "requires_python": "~=3.4",
             "summary": "Query PyPI from the command line",
             "url": "https://github.com/jwodder/qypi",
-            "version": "0.1.0.post1"
+            "version": "0.1.0.post1",
+            "yanked": false,
+            "yanked_reason": null
         }
     ]
 
@@ -349,7 +355,9 @@ Example::
                     "python_version": "py3",
                     "size": 13590,
                     "upload_time": "2017-04-02T03:32:44",
-                    "url": "https://files.pythonhosted.org/packages/f9/3f/6b184713e79da15cd451f0dab91864633175242f4d321df0cacdd2dc8300/qypi-0.1.0.post1-py3-none-any.whl"
+                    "url": "https://files.pythonhosted.org/packages/f9/3f/6b184713e79da15cd451f0dab91864633175242f4d321df0cacdd2dc8300/qypi-0.1.0.post1-py3-none-any.whl",
+                    "yanked": false,
+                    "yanked_reason": null
                 },
                 {
                     "comment_text": "",
@@ -364,7 +372,9 @@ Example::
                     "python_version": "source",
                     "size": 8975,
                     "upload_time": "2017-04-02T03:32:46",
-                    "url": "https://files.pythonhosted.org/packages/0e/49/3056ee68b44c8eab4d4698b52ae4d18c0db92c80abc312894c02c4722621/qypi-0.1.0.post1.tar.gz"
+                    "url": "https://files.pythonhosted.org/packages/0e/49/3056ee68b44c8eab4d4698b52ae4d18c0db92c80abc312894c02c4722621/qypi-0.1.0.post1.tar.gz",
+                    "yanked": false,
+                    "yanked_reason": null
                 }
             ],
             "name": "qypi",

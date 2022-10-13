@@ -130,6 +130,8 @@ def releases(packages):
                         "is_prerelease": parse(version).is_prerelease,
                         "release_date": first_upload(pkg["releases"][version]),
                         "release_url": project_url + version,
+                        "yanked": pkg["releases"][version][0]["yanked"],
+                        "yanked_reason": pkg["releases"][version][0]["yanked_reason"],
                     }
                     for version in sorted(pkg["releases"], key=parse)
                 ],
@@ -165,6 +167,8 @@ def files(packages, trust_downloads):
                     "name": pkg["info"]["name"],
                     "version": pkg["info"]["version"],
                     "files": pkgfiles,
+                    "yanked": pkg["info"]["yanked"],
+                    "yanked_reason": pkg["info"]["yanked_reason"],
                 }
             )
 

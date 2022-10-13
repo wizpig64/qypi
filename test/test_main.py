@@ -373,7 +373,9 @@ def test_info():
         '        "summary": "Including drive environment my it.",\n'
         '        "unknown_field": "passed through",\n'
         '        "url": "https://www.johnson.com/homepage.php",\n'
-        '        "version": "1.0.0"\n'
+        '        "version": "1.0.0",\n'
+        '        "yanked": false,\n'
+        '        "yanked_reason": null\n'
         "    }\n"
         "]\n"
     )
@@ -410,7 +412,9 @@ def test_info_explicit_latest_version():
         '        "summary": "Including drive environment my it.",\n'
         '        "unknown_field": "passed through",\n'
         '        "url": "https://www.johnson.com/homepage.php",\n'
-        '        "version": "1.0.0"\n'
+        '        "version": "1.0.0",\n'
+        '        "yanked": false,\n'
+        '        "yanked_reason": null\n'
         "    }\n"
         "]\n"
     )
@@ -447,7 +451,9 @@ def test_info_explicit_version():
         '        "summary": "Water audience cut call.",\n'
         '        "unknown_field": "passed through",\n'
         '        "url": "http://www.sanchez.net/index.htm",\n'
-        '        "version": "0.2.0"\n'
+        '        "version": "0.2.0",\n'
+        '        "yanked": false,\n'
+        '        "yanked_reason": null\n'
         "    }\n"
         "]\n"
     )
@@ -485,7 +491,9 @@ def test_info_description():
         '        "summary": "Including drive environment my it.",\n'
         '        "unknown_field": "passed through",\n'
         '        "url": "https://www.johnson.com/homepage.php",\n'
-        '        "version": "1.0.0"\n'
+        '        "version": "1.0.0",\n'
+        '        "yanked": false,\n'
+        '        "yanked_reason": null\n'
         "    }\n"
         "]\n"
     )
@@ -522,7 +530,9 @@ def test_multiple_info():
         '        "summary": "Boy kid chance indeed resource explain.",\n'
         '        "unknown_field": "passed through",\n'
         '        "url": "http://www.johnson.com/author.jsp",\n'
-        '        "version": "1.0.0"\n'
+        '        "version": "1.0.0",\n'
+        '        "yanked": false,\n'
+        '        "yanked_reason": null\n'
         "    },\n"
         "    {\n"
         '        "classifiers": [\n'
@@ -549,7 +559,9 @@ def test_multiple_info():
         '        "summary": "Including drive environment my it.",\n'
         '        "unknown_field": "passed through",\n'
         '        "url": "https://www.johnson.com/homepage.php",\n'
-        '        "version": "1.0.0"\n'
+        '        "version": "1.0.0",\n'
+        '        "yanked": false,\n'
+        '        "yanked_reason": null\n'
         "    }\n"
         "]\n"
     )
@@ -586,7 +598,9 @@ def test_info_nonexistent():
         '        "summary": "Including drive environment my it.",\n'
         '        "unknown_field": "passed through",\n'
         '        "url": "https://www.johnson.com/homepage.php",\n'
-        '        "version": "1.0.0"\n'
+        '        "version": "1.0.0",\n'
+        '        "yanked": false,\n'
+        '        "yanked_reason": null\n'
         "    }\n"
         "]\n"
         "qypi: does-not-exist: package not found\n"
@@ -624,7 +638,9 @@ def test_info_nonexistent_split():
         '        "summary": "Including drive environment my it.",\n'
         '        "unknown_field": "passed through",\n'
         '        "url": "https://www.johnson.com/homepage.php",\n'
-        '        "version": "1.0.0"\n'
+        '        "version": "1.0.0",\n'
+        '        "yanked": false,\n'
+        '        "yanked_reason": null\n'
         "    }\n"
         "]\n"
     )
@@ -719,10 +735,194 @@ def test_info_nullfields():
         '        "summary": "Film station choose short.",\n'
         '        "unknown_field": null,\n'
         '        "url": "https://bryant.com/wp-content/search/author/",\n'
-        '        "version": "1.0.0"\n'
+        '        "version": "1.0.0",\n'
+        '        "yanked": false,\n'
+        '        "yanked_reason": null\n'
         "    }\n"
         "]\n"
     )
+
+
+@pytest.mark.usefixtures("mock_pypi_json")
+def test_info_cryptography():
+    # tests that this returns info for yanked patch 38.0.2
+    r = CliRunner().invoke(qypi, ["info", "cryptography"])
+    assert r.exit_code == 0, show_result(r)
+    assert r.output == (
+        '[\n'
+        '    {\n'
+        '        "bugtrack_url": null,\n'
+        '        "classifiers": [\n'
+        '            "Development Status :: 5 - Production/Stable",\n'
+        '            "Intended Audience :: Developers",\n'
+        '            "License :: OSI Approved :: Apache Software License",\n'
+        '            "License :: OSI Approved :: BSD License",\n'
+        '            "Natural Language :: English",\n'
+        '            "Operating System :: MacOS :: MacOS X",\n'
+        '            "Operating System :: Microsoft :: Windows",\n'
+        '            "Operating System :: POSIX",\n'
+        '            "Operating System :: POSIX :: BSD",\n'
+        '            "Operating System :: POSIX :: Linux",\n'
+        '            "Programming Language :: Python",\n'
+        '            "Programming Language :: Python :: 3",\n'
+        '            "Programming Language :: Python :: 3 :: Only",\n'
+        '            "Programming Language :: Python :: 3.10",\n'
+        '            "Programming Language :: Python :: 3.6",\n'
+        '            "Programming Language :: Python :: 3.7",\n'
+        '            "Programming Language :: Python :: 3.8",\n'
+        '            "Programming Language :: Python :: 3.9",\n'
+        '            "Programming Language :: Python :: Implementation :: CPython",\n'
+        '            "Programming Language :: Python :: Implementation :: PyPy",\n'
+        '            "Topic :: Security :: Cryptography"\n'
+        '        ],\n'
+        '        "description_content_type": "text/x-rst",\n'
+        '        "docs_url": null,\n'
+        '        "download_url": null,\n'
+        '        "keywords": null,\n'
+        '        "license": "BSD-3-Clause OR Apache-2.0",\n'
+        '        "name": "cryptography",\n'
+        '        "package_url": "https://pypi.org/project/cryptography/",\n'
+        '        "people": [\n'
+        '            {\n'
+        '                "email": "cryptography-dev@python.org",\n'
+        '                "name": "The Python Cryptographic Authority and individual contributors",\n'
+        '                "role": "author"\n'
+        '            }\n'
+        '        ],\n'
+        '        "platform": null,\n'
+        '        "project_url": "https://pypi.org/project/cryptography/",\n'
+        '        "project_urls": {\n'
+        '            "Changelog": "https://cryptography.io/en/latest/changelog/",\n'
+        '            "Documentation": "https://cryptography.io/",\n'
+        '            "Homepage": "https://github.com/pyca/cryptography",\n'
+        '            "Issues": "https://github.com/pyca/cryptography/issues",\n'
+        '            "Source": "https://github.com/pyca/cryptography/"\n'
+        '        },\n'
+        '        "release_date": "2022-10-11T18:58:50.172163Z",\n'
+        '        "release_url": "https://pypi.org/project/cryptography/38.0.2/",\n'
+        '        "requires_dist": [\n'
+        '            "cffi (>=1.12)",\n'
+        '            "sphinx (!=1.8.0,!=3.1.0,!=3.1.1,>=1.6.5) ; extra == \'docs\'",\n'
+        '            "sphinx-rtd-theme ; extra == \'docs\'",\n'
+        '            "pyenchant (>=1.6.11) ; extra == \'docstest\'",\n'
+        '            "twine (>=1.12.0) ; extra == \'docstest\'",\n'
+        '            "sphinxcontrib-spelling (>=4.0.1) ; extra == \'docstest\'",\n'
+        '            "black ; extra == \'pep8test\'",\n'
+        '            "flake8 ; extra == \'pep8test\'",\n'
+        '            "flake8-import-order ; extra == \'pep8test\'",\n'
+        '            "pep8-naming ; extra == \'pep8test\'",\n'
+        '            "setuptools-rust (>=0.11.4) ; extra == \'sdist\'",\n'
+        '            "bcrypt (>=3.1.5) ; extra == \'ssh\'",\n'
+        '            "pytest (>=6.2.0) ; extra == \'test\'",\n'
+        '            "pytest-benchmark ; extra == \'test\'",\n'
+        '            "pytest-cov ; extra == \'test\'",\n'
+        '            "pytest-subtests ; extra == \'test\'",\n'
+        '            "pytest-xdist ; extra == \'test\'",\n'
+        '            "pretend ; extra == \'test\'",\n'
+        '            "iso8601 ; extra == \'test\'",\n'
+        '            "pytz ; extra == \'test\'",\n'
+        '            "hypothesis (!=3.79.2,>=1.11.4) ; extra == \'test\'"\n'
+        '        ],\n'
+        '        "requires_python": ">=3.6",\n'
+        '        "summary": "cryptography is a package which provides cryptographic recipes and primitives to Python developers.",\n'
+        '        "url": "https://github.com/pyca/cryptography",\n'
+        '        "version": "38.0.2",\n'
+        '        "yanked": true,\n'
+        '        "yanked_reason": "Regression in OpenSSL."\n'
+        '    }\n'
+        ']\n'
+    )
+
+
+# @pytest.mark.usefixtures("mock_pypi_json")
+# def test_info_yanked():
+#     # test that 'info' didn't return yanked 38.0.2, but 38.0.1.
+#     r = CliRunner().invoke(qypi, ["info", "cryptography"])
+#     assert r.exit_code == 0, show_result(r)
+#     assert r.output == (
+#         '[\n'
+#         '    {\n'
+#         '        "bugtrack_url": null,\n'
+#         '        "classifiers": [\n'
+#         '            "Development Status :: 5 - Production/Stable",\n'
+#         '            "Intended Audience :: Developers",\n'
+#         '            "License :: OSI Approved :: Apache Software License",\n'
+#         '            "License :: OSI Approved :: BSD License",\n'
+#         '            "Natural Language :: English",\n'
+#         '            "Operating System :: MacOS :: MacOS X",\n'
+#         '            "Operating System :: Microsoft :: Windows",\n'
+#         '            "Operating System :: POSIX",\n'
+#         '            "Operating System :: POSIX :: BSD",\n'
+#         '            "Operating System :: POSIX :: Linux",\n'
+#         '            "Programming Language :: Python",\n'
+#         '            "Programming Language :: Python :: 3",\n'
+#         '            "Programming Language :: Python :: 3 :: Only",\n'
+#         '            "Programming Language :: Python :: 3.10",\n'
+#         '            "Programming Language :: Python :: 3.6",\n'
+#         '            "Programming Language :: Python :: 3.7",\n'
+#         '            "Programming Language :: Python :: 3.8",\n'
+#         '            "Programming Language :: Python :: 3.9",\n'
+#         '            "Programming Language :: Python :: Implementation :: CPython",\n'
+#         '            "Programming Language :: Python :: Implementation :: PyPy",\n'
+#         '            "Topic :: Security :: Cryptography"\n'
+#         '        ],\n'
+#         '        "description_content_type": "text/x-rst",\n'
+#         '        "docs_url": null,\n'
+#         '        "download_url": null,\n'
+#         '        "keywords": null,\n'
+#         '        "license": "BSD-3-Clause OR Apache-2.0",\n'
+#         '        "name": "cryptography",\n'
+#         '        "package_url": "https://pypi.org/project/cryptography/",\n'
+#         '        "people": [\n'
+#         '            {\n'
+#         '                "email": "cryptography-dev@python.org",\n'
+#         '                "name": "The Python Cryptographic Authority and individual contributors",\n'
+#         '                "role": "author"\n'
+#         '            }\n'
+#         '        ],\n'
+#         '        "platform": null,\n'
+#         '        "project_url": "https://pypi.org/project/cryptography/",\n'
+#         '        "project_urls": {\n'
+#         '            "Changelog": "https://cryptography.io/en/latest/changelog/",\n'
+#         '            "Documentation": "https://cryptography.io/",\n'
+#         '            "Homepage": "https://github.com/pyca/cryptography",\n'
+#         '            "Issues": "https://github.com/pyca/cryptography/issues",\n'
+#         '            "Source": "https://github.com/pyca/cryptography/"\n'
+#         '        },\n'
+#         '        "release_date": "2022-09-07T12:35:54.595119Z",\n'
+#         '        "release_url": "https://pypi.org/project/cryptography/38.0.1/",\n'
+#         '        "requires_dist": [\n'
+#         '            "cffi (>=1.12)",\n'
+#         '            "sphinx (!=1.8.0,!=3.1.0,!=3.1.1,>=1.6.5) ; extra == \'docs\'",\n'
+#         '            "sphinx-rtd-theme ; extra == \'docs\'",\n'
+#         '            "pyenchant (>=1.6.11) ; extra == \'docstest\'",\n'
+#         '            "twine (>=1.12.0) ; extra == \'docstest\'",\n'
+#         '            "sphinxcontrib-spelling (>=4.0.1) ; extra == \'docstest\'",\n'
+#         '            "black ; extra == \'pep8test\'",\n'
+#         '            "flake8 ; extra == \'pep8test\'",\n'
+#         '            "flake8-import-order ; extra == \'pep8test\'",\n'
+#         '            "pep8-naming ; extra == \'pep8test\'",\n'
+#         '            "setuptools-rust (>=0.11.4) ; extra == \'sdist\'",\n'
+#         '            "bcrypt (>=3.1.5) ; extra == \'ssh\'",\n'
+#         '            "pytest (>=6.2.0) ; extra == \'test\'",\n'
+#         '            "pytest-benchmark ; extra == \'test\'",\n'
+#         '            "pytest-cov ; extra == \'test\'",\n'
+#         '            "pytest-subtests ; extra == \'test\'",\n'
+#         '            "pytest-xdist ; extra == \'test\'",\n'
+#         '            "pretend ; extra == \'test\'",\n'
+#         '            "iso8601 ; extra == \'test\'",\n'
+#         '            "pytz ; extra == \'test\'",\n'
+#         '            "hypothesis (!=3.79.2,>=1.11.4) ; extra == \'test\'"\n'
+#         '        ],\n'
+#         '        "requires_python": ">=3.6",\n'
+#         '        "summary": "cryptography is a package which provides cryptographic recipes and primitives to Python developers.",\n'
+#         '        "url": "https://github.com/pyca/cryptography",\n'
+#         '        "version": "38.0.1",\n'
+#         '        "yanked": false,\n'
+#         '        "yanked_reason": null\n'
+#         '    }\n'
+#         ']\n'
+#     )
 
 
 @pytest.mark.usefixtures("mock_pypi_json")
@@ -782,11 +982,15 @@ def test_files():
         '                "unknown_field": "passed through",\n'
         '                "upload_time": "2019-02-01T09:17:59",\n'
         '                "upload_time_iso_8601": "2019-02-01T09:17:59.172284Z",\n'
-        '                "url": "https://files.dummyhosted.nil/packages/7f/97/e5ec19aed5d108c2f6c2fc6646d8247b1fadb49f0bf48e87a0fca8827696/foobar-1.0.0-py2.py3-none-any.whl"\n'
+        '                "url": "https://files.dummyhosted.nil/packages/7f/97/e5ec19aed5d108c2f6c2fc6646d8247b1fadb49f0bf48e87a0fca8827696/foobar-1.0.0-py2.py3-none-any.whl",\n'
+        '                "yanked": false,\n'
+        '                "yanked_reason": null\n'
         "            }\n"
         "        ],\n"
         '        "name": "foobar",\n'
-        '        "version": "1.0.0"\n'
+        '        "version": "1.0.0",\n'
+        '        "yanked": false,\n'
+        '        "yanked_reason": null\n'
         "    }\n"
         "]\n"
     )
@@ -815,11 +1019,15 @@ def test_files_explicit_version():
         '                "unknown_field": "passed through",\n'
         '                "upload_time": "2017-02-04T12:34:05",\n'
         '                "upload_time_iso_8601": "2017-02-04T12:34:05.766270Z",\n'
-        '                "url": "https://files.dummyhosted.nil/packages/54/40/36eccb727704b5dabfda040e0eb23c29dbe26cf1a78cbeb24f33deb26b22/foobar-0.2.0-py2.py3-none-any.whl"\n'
+        '                "url": "https://files.dummyhosted.nil/packages/54/40/36eccb727704b5dabfda040e0eb23c29dbe26cf1a78cbeb24f33deb26b22/foobar-0.2.0-py2.py3-none-any.whl",\n'
+        '                "yanked": false,\n'
+        '                "yanked_reason": null\n'
         "            }\n"
         "        ],\n"
         '        "name": "foobar",\n'
-        '        "version": "0.2.0"\n'
+        '        "version": "0.2.0",\n'
+        '        "yanked": false,\n'
+        '        "yanked_reason": null\n'
         "    }\n"
         "]\n"
     )
@@ -836,19 +1044,61 @@ def test_releases():
         '            "is_prerelease": false,\n'
         '            "release_date": "2013-01-18T18:53:56.265173Z",\n'
         '            "release_url": "https://dummy.nil/pypi/foobar/0.1.0",\n'
-        '            "version": "0.1.0"\n'
+        '            "version": "0.1.0",\n'
+        '            "yanked": false,\n'
+        '            "yanked_reason": null\n'
         "        },\n"
         "        {\n"
         '            "is_prerelease": false,\n'
         '            "release_date": "2017-02-04T12:34:05.766270Z",\n'
         '            "release_url": "https://dummy.nil/pypi/foobar/0.2.0",\n'
-        '            "version": "0.2.0"\n'
+        '            "version": "0.2.0",\n'
+        '            "yanked": false,\n'
+        '            "yanked_reason": null\n'
         "        },\n"
         "        {\n"
         '            "is_prerelease": false,\n'
         '            "release_date": "2019-02-01T09:17:59.172284Z",\n'
         '            "release_url": "https://dummy.nil/pypi/foobar/1.0.0",\n'
-        '            "version": "1.0.0"\n'
+        '            "version": "1.0.0",\n'
+        '            "yanked": false,\n'
+        '            "yanked_reason": null\n'
+        "        }\n"
+        "    ]\n"
+        "}\n"
+    )
+
+
+@pytest.mark.usefixtures("mock_pypi_json")
+def test_releases_yanked():
+    r = CliRunner().invoke(qypi, ["releases", "cryptography"])
+    assert r.exit_code == 0, show_result(r)
+    assert r.output == (
+        "{\n"
+        '    "cryptography": [\n'
+        "        {\n"
+        '            "is_prerelease": false,\n'
+        '            "release_date": "2022-09-07T00:02:06.838776Z",\n'
+        '            "release_url": "https://pypi.org/project/cryptography/38.0.0",\n'
+        '            "version": "38.0.0",\n'
+        '            "yanked": false,\n'
+        '            "yanked_reason": null\n'
+        "        },\n"
+        "        {\n"
+        '            "is_prerelease": false,\n'
+        '            "release_date": "2022-09-07T12:35:54.595119Z",\n'
+        '            "release_url": "https://pypi.org/project/cryptography/38.0.1",\n'
+        '            "version": "38.0.1",\n'
+        '            "yanked": false,\n'
+        '            "yanked_reason": null\n'
+        "        },\n"
+        "        {\n"
+        '            "is_prerelease": false,\n'
+        '            "release_date": "2022-10-11T18:58:50.172163Z",\n'
+        '            "release_url": "https://pypi.org/project/cryptography/38.0.2",\n'
+        '            "version": "38.0.2",\n'
+        '            "yanked": true,\n'
+        '            "yanked_reason": "Regression in OpenSSL."\n'
         "        }\n"
         "    ]\n"
         "}\n"

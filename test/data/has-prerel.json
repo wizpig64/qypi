@@ -25,7 +25,9 @@
             "cheesecake_toward-little": "HVWAHFQnxPKrxLoWOzqx",
             "cheesecake_ball-staff-home": 1906,
             "_pypi_the-month-thank": "tZocMhoODznKtAxEVKbs",
-            "_pypi_indeed-arrive": 2356
+            "_pypi_indeed-arrive": 2356,
+            "yanked": false,
+            "yanked_reason": null
         },
         "files": [
             {
@@ -44,7 +46,9 @@
                 "unknown_field": "passed through",
                 "upload_time": "1970-04-21T22:33:29",
                 "upload_time_iso_8601": "1970-04-21T22:33:29.915221Z",
-                "url": "https://files.dummyhosted.nil/packages/b7/be/340b13c29b8ad078c711693cd702e1581fff945ab4d533fe2ba5bfeedb8f/has_prerel-1.0.0.tar.gz"
+                "url": "https://files.dummyhosted.nil/packages/b7/be/340b13c29b8ad078c711693cd702e1581fff945ab4d533fe2ba5bfeedb8f/has_prerel-1.0.0.tar.gz",
+                "yanked": false,
+                "yanked_reason": null
             }
         ]
     },
@@ -74,7 +78,9 @@
             "cheesecake_thought-life-more": "LnqmqPmRHoPaCmmnuCvr",
             "cheesecake_involve-late-hold": 1568,
             "_pypi_everyone-leg-show": "jHjJLOpBfzpitKAsxxmM",
-            "_pypi_speech-various": 4436
+            "_pypi_speech-various": 4436,
+            "yanked": false,
+            "yanked_reason": null
         },
         "files": [
             {
@@ -93,7 +99,9 @@
                 "unknown_field": "passed through",
                 "upload_time": "1976-08-10T20:15:23",
                 "upload_time_iso_8601": "1976-08-10T20:15:23.166615Z",
-                "url": "https://files.dummyhosted.nil/packages/cc/6c/54b0ea444850e5b93c850a5a841791b1734a1a1cc135a1bc26d0349f0c48/has_prerel-1.0.1a1-py2.py3-none-any.whl"
+                "url": "https://files.dummyhosted.nil/packages/cc/6c/54b0ea444850e5b93c850a5a841791b1734a1a1cc135a1bc26d0349f0c48/has_prerel-1.0.1a1-py2.py3-none-any.whl",
+                "yanked": false,
+                "yanked_reason": null
             },
             {
                 "md5_digest": "7556a0c09be49ca29f937cc04340caca",
@@ -111,7 +119,9 @@
                 "unknown_field": "passed through",
                 "upload_time": "2010-04-17T16:41:12",
                 "upload_time_iso_8601": "2010-04-17T16:41:12.726119Z",
-                "url": "https://files.dummyhosted.nil/packages/66/98/7b07cecf05c1c6d36149689ceba068cd70345e77f5de597b0f9de10f41f0/has_prerel-1.0.1a1.tar.gz"
+                "url": "https://files.dummyhosted.nil/packages/66/98/7b07cecf05c1c6d36149689ceba068cd70345e77f5de597b0f9de10f41f0/has_prerel-1.0.1a1.tar.gz",
+                "yanked": false,
+                "yanked_reason": null
             }
         ]
     }
